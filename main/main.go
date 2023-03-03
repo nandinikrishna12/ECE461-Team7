@@ -134,7 +134,13 @@ func main() {
 	links = cli()
 
 	router := gin.Default()
+	router.LoadHTMLFiles("index.html")
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"title": "Main website",
+		})
+	})
 	router.GET("/repos", jsonOutput)
-	router.Run("localhost:8080")
 
+	router.Run("localhost:8080")
 }
