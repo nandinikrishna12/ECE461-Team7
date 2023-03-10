@@ -15,22 +15,28 @@ function login() {
     document.getElementById("login-message").innerHTML = "Invalid username or password.";
   }
 }
-
 function callAPI() {
   const inputText = document.getElementById("input-text").value;
-  fetch("http://localhost:8080/repos", {
-    method: "GET",
-    body: JSON.stringify({ input: inputText }),
-    headers: {
-      "Content-Type": "application/json"
-    }
+  fetch("http://localhost:8080/repos")
+  .then(function (response) {
+    return response.json();
   })
-  .then(response => response.json())
-  .then(data => {
+  .then(function (data){
     // Handle API response data
-    
+    appendData(data);
+    console.log("reached appenddata\n")
   })
-  .catch(error => {
+  .catch(function (err) {
     // Handle API error
+    console.log(err);
   });
+}
+
+function appendData(data) {
+  var mainContainer = document.getElementById("myData");
+  for (var i = 0; i < data.length; i++){
+    var div = document.createElement("div");
+    div.innerHTML = 'NetScore: ' + data[i].NetScore;
+    mainContainer.appendChild(div)
+  }
 }
