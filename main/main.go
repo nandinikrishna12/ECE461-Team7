@@ -9,6 +9,7 @@ import (
 	golog "log"
 	"os"
 	"regexp"
+
 	//"sort"
 	"strings"
 
@@ -74,24 +75,24 @@ func cli(toRateURL string) Link {
 
 	// A loop iterates through and prints each of the slice values.
 	//for _, each_ln := range text {
-		var tmpSite int
-		var tmpName string
-		gitMatch := strings.Contains(toRateURL, "github")
-		if gitMatch {
-			gitLinkMatch := regexp.MustCompile(".*github.com/(.*)")
-			tmpName = gitLinkMatch.FindStringSubmatch(toRateURL)[1]
-			tmpSite = api.GITHUB
-		} else {
-			npmLinkMatch := regexp.MustCompile(".*package/(.*)")
-			tmpName = npmLinkMatch.FindStringSubmatch(toRateURL)[1]
-			tmpSite = api.NPM
-		}
+	var tmpSite int
+	var tmpName string
+	gitMatch := strings.Contains(toRateURL, "github")
+	if gitMatch {
+		gitLinkMatch := regexp.MustCompile(".*github.com/(.*)")
+		tmpName = gitLinkMatch.FindStringSubmatch(toRateURL)[1]
+		tmpSite = api.GITHUB
+	} else {
+		npmLinkMatch := regexp.MustCompile(".*package/(.*)")
+		tmpName = npmLinkMatch.FindStringSubmatch(toRateURL)[1]
+		tmpSite = api.NPM
+	}
 
-		// get the metrics in ndjson format for each link and add to list
-		// fmt.Printf("%s\n", tmpName)
-		netscore, ndjson := metrics.GetMetrics(toRateURL, tmpSite, tmpName)
-		newLink := Link{site: tmpSite, name: tmpName, netScore: netscore, ndjson: ndjson}
-		return newLink
+	// get the metrics in ndjson format for each link and add to list
+	// fmt.Printf("%s\n", tmpName)
+	netscore, ndjson := metrics.GetMetrics(toRateURL, tmpSite, tmpName)
+	newLink := Link{site: tmpSite, name: tmpName, netScore: netscore, ndjson: ndjson}
+	return newLink
 	//}
 
 	// Sort array of links by net score (descending)
@@ -124,16 +125,17 @@ func printOutput(links []Link) {
 }
 
 var links []Link
+
 type reposJson map[string]interface{}
 type arr_repos []map[string]interface{}
 
 func jsonOutput(c *gin.Context) {
-	allrepos := make(arr_repos, 0) //necessary so that when you call the API again, it doesnt append the same stuff to the list 
+	allrepos := make(arr_repos, 0) //necessary so that when you call the API again, it doesnt append the same stuff to the list
 
 	for _, link := range links {
 		newjson := make(reposJson)
 		json.Unmarshal([]byte(link.ndjson), &newjson)
-		allrepos = append(allrepos, newjson)		
+		allrepos = append(allrepos, newjson)
 	}
 
 	c.IndentedJSON(http.StatusOK, allrepos)
@@ -152,7 +154,7 @@ func main() {
 	for scanner.Scan() {
 		text = append(text, scanner.Text())
 	}
-	
+
 	//The method os.File.Close() is called on the os.File object to close the file
 	file.Close()
 
@@ -168,12 +170,12 @@ func main() {
 	}))
 
 	//run database
-    configs.ConnectDB()
+	configs.ConnectDB()
 
 	// router.Static("/assets", "./assets")
 	// router.LoadHTMLGlob("views/*")
 
 	routes.RepoRoute(router)
 
-	router.Run("localhost:5500")
+	router.Run("0.0.0.0:5500")
 }
