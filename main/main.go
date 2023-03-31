@@ -128,12 +128,12 @@ func printOutput(links []Link) {
 // type arr_repos []map[string]interface{}
 
 // func jsonOutput(c *gin.Context) {
-// 	allrepos := make(arr_repos, 0) //necessary so that when you call the API again, it doesnt append the same stuff to the list 
+// 	allrepos := make(arr_repos, 0) //necessary so that when you call the API again, it doesnt append the same stuff to the list
 
 // 	for _, link := range links {
 // 		newjson := make(reposJson)
 // 		json.Unmarshal([]byte(link.ndjson), &newjson)
-// 		allrepos = append(allrepos, newjson)		
+// 		allrepos = append(allrepos, newjson)
 // 	}
 
 // 	c.IndentedJSON(http.StatusOK, allrepos)
@@ -150,7 +150,7 @@ func main() {
 	}))
 
 	//run database
-    configs.ConnectDB()
+	configs.ConnectDB()
 
 	router.Static("/assets", "./assets")
 	router.LoadHTMLGlob("views/*")
