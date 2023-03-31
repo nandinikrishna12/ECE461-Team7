@@ -22,7 +22,7 @@ RUN cd main; go build -o main main.go
 EXPOSE 5500
 
 #run main
-CMD ./main/main ./main/test/txt
+CMD HOME=/root ./main/main ./main/test/txt
 
 # docker run --env-file=.env alpine env
 # docker build --tag webservice .
