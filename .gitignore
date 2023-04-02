@@ -22,7 +22,7 @@ node_modules/
 go.work
 
 # Environment Variable
-.env
+# .env
 
 .DS_Store
 *.log
