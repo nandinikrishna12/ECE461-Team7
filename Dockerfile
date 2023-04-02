@@ -15,6 +15,7 @@ COPY . ./
 #run install
 ARG MONGOURI
 ENV MONGOURI $MONGOURI
+
 RUN go mod tidy
 RUN go mod download
 
@@ -29,5 +30,3 @@ CMD HOME=/root ./main/main ./main/test/txt
 # docker run --env-file=.env alpine env
 # docker build --tag webservice .
 # docker run --publish 5500:5500 webservice
-
-
