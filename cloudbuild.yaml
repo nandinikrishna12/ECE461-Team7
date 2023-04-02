@@ -17,6 +17,6 @@ steps:
         '.']
   # args: ['build', '--tag', 'us-central1-docker.pkg.dev/webservice-381819/cloud-run-source-deploy/ece461-team7/hello:3d9e82dcc2ec3fb18d77f329d33546b36aaaf8b7', '.']
 
-#docker push
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/webservice-381819/cloud-run-source-deploy/ece461-team7/hello:3d9e82dcc2ec3fb18d77f329d33546b36aaaf8b7']
+# #docker push
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['push', 'us-central1-docker.pkg.dev/webservice-381819/cloud-run-source-deploy/ece461-team7/hello:3d9e82dcc2ec3fb18d77f329d33546b36aaaf8b7']
