@@ -13,8 +13,8 @@ COPY . ./
 # RUN export $(xargs <.env)
 
 #run install
-ARG MONGOURI
-ENV MONGOURI $MONGOURI
+# ARG MONGOURI
+# ENV MONGOURI $MONGOURI
 
 RUN go mod tidy
 RUN go mod download
