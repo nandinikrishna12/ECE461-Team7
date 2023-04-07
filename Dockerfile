@@ -22,11 +22,15 @@ RUN go mod download
 #run build
 RUN cd main; go build -o main main.go
 
-EXPOSE 5500
+RUN apt-get update && apt-get upgrade -y && apt-get install -y nodejs npm        
+
+# EXPOSE 5500
+EXPOSE 3000
 
 #run main
-CMD HOME=/root ./main/main ./main/test/txt
+CMD HOME=/root ./main/main & cd assets && npm start
 
 # docker run --env-file=.env alpine env
 # docker build --tag webservice .
 # docker run --publish 5500:5500 webservice
+# docker run --publish 3000:3000 webservice
