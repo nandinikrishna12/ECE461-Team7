@@ -22,7 +22,8 @@ RUN go mod download
 #run build
 RUN cd main; go build -o main main.go
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y nodejs npm        
+RUN apt-get update && apt-get upgrade -y && apt-get install -y nodejs npm   
+RUN npm install     
 
 # EXPOSE 5500
 EXPOSE 3000
