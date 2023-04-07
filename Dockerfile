@@ -23,7 +23,10 @@ RUN go mod download
 RUN cd main; go build -o main main.go
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y nodejs npm   
-RUN npm install     
+RUN npm i react-scripts
+RUN npm install react react-dom --save
+RUN npm i web-vitals --save-dev
+
 
 # EXPOSE 5500
 EXPOSE 3000
