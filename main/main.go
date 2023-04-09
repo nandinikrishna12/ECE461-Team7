@@ -177,5 +177,5 @@ func main() {
 
 	//routes.RepoRoute(router)
 
-	router.Run("localhost:5500")
+	router.Run("0.0.0.0:5500")
 }
