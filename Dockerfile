@@ -27,7 +27,7 @@ RUN npm i react-scripts
 RUN npm install react react-dom --save
 RUN npm i web-vitals --save-dev
 
-ENV HOST 35.209.87.90
+# ENV HOST 35.209.87.90
 
 
 EXPOSE 5500
@@ -39,6 +39,6 @@ CMD HOME=/root ./main/main & cd assets && npm start
 # docker run --env-file=.env alpine env
 # docker build --tag webservice .
 # docker run --publish 5500:5500 webservice
-# docker run --publish 3000:3000 webservice
+# docker run --publish 0.0.0.0:3000:3000 webservice
 # docker run --publish 0.0.0.0:3000:3000 --publish 0.0.0.0:5500:5500 webservice
 # docker run --publish 35.209.87.90:3000:3000 webservice
