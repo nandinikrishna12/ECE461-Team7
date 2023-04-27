@@ -8,6 +8,7 @@ require (
 )
 
 require (
+<<<<<<< HEAD
 	github.com/google/go-cmp v0.5.5 // indirect
 	github.com/gorilla/mux v1.8.0
 	github.com/kr/pretty v0.3.0 // indirect
@@ -18,6 +19,15 @@ require (
 require github.com/felixge/httpsnoop v1.0.1 // indirect
 
 require (
+=======
+	github.com/bytedance/sonic v1.8.0 // indirect
+	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
+	github.com/gin-contrib/sse v0.1.0 // indirect
+	github.com/go-playground/locales v0.14.1 // indirect
+	github.com/go-playground/universal-translator v0.18.1 // indirect
+	github.com/go-playground/validator/v10 v10.11.2
+	github.com/goccy/go-json v0.10.0 // indirect
+>>>>>>> c1495a70f1e4f6b11f141439d7cfe3948a72968e
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/joho/godotenv v1.5.1
 	github.com/klauspost/compress v1.13.6 // indirect
